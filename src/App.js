@@ -168,6 +168,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import MoviesList from "./components/MoviesList";
 import "./App.css";
+import AddMovieForm from "./components/AddMovieForm";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -219,7 +220,7 @@ function App() {
 
     const timer = setInterval(() => {
       fetchMoviesHandler();
-    }, 5000);
+    });
 
     return () => clearInterval(timer);
   }, [retryTimer, fetchMoviesHandler]);
@@ -234,6 +235,9 @@ function App() {
         ) : (
           <MoviesList movies={movies} />
         )}
+      </section>
+      <section>
+        <AddMovieForm/>
       </section>
       {retryTimer !== null && (
         <section>
